@@ -1,0 +1,30 @@
+---
+variables:
+  - SOURCE_USERNAME = "admin"
+  - SOURCE_BASE = "192.168.0.11"
+  - DESTINATION_BASE = "/media/usb/repos"
+
+config:
+  rsync_flags: "-avPh"
+
+sync:
+  debian:
+    src: "${SOURCE_BASE}:/data/debian"
+    dest: "${DESTINATION_BASE}/debian"
+  
+  ubuntu:
+    src: "${SOURCE_BASE}:/data/ubuntu"
+    dest: "${DESTINATION_BASE}/ubuntu"
+  
+  centos:
+    src: "${SOURCE_BASE}:/data/centos"
+    dest: "${DESTINATION_BASE}/centos"
+  
+  local_backup:
+    src: "~/documents"
+    dest: "/backup/documents"
+  
+  remote_web:
+    src: "user@example.com:/var/www/html"
+    dest: "${DESTINATION_BASE}/web_backup"
+...
